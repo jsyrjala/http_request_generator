@@ -36,4 +36,6 @@ void http_request_destroy(http_request* request);
 
 http_field* http_create_field(char* name, char* value);
 
+int http_request_send(http_request* request);
+
 #endif /* HTTP_REQUEST_H_INCLUDED */

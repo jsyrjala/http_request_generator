@@ -75,6 +75,6 @@ list_node* list_find(list_node* node, int(*func)(void*, void*), void *data) {
     if(func(node->data, data) > 0) {
       return node;
     }
-    return NULL;
   }
+  return NULL;
 }

@@ -14,6 +14,7 @@ http_field* http_create_field(char* name, char* value)
   }
   field->name = name;
   field->value = value;
+  return field;
 }
 
 void http_request_free(http_request* request) 
@@ -48,7 +49,7 @@ static int wait_for_response(const char* ok_response) {
 
 static int send_at_command(const char* command) {
   // TODO implement
-  printf("--Sending command:\n", command);
+  printf("--Sending command:\n");
   printf("%s\n", command);
   return wait_for_response("OK");
 }
@@ -57,18 +58,18 @@ static int send_data(const char* data, int length) {
   // TODO implement
   printf("--Sending data %d bytes:\n", length);
   printf("%s\n", data);
-  printf("--Sending data ended.\n", length);
+  printf("--Sending data ended.\n");
   return wait_for_response("OK");
 }
 
 static int send_parameter(char* buffer, const char* command, const void* name, const void* value) {
   sprintf(buffer, command, name, value);
-  send_at_command(buffer);
+  return send_at_command(buffer);
 }
 
 static int send_int_parameter(char* buffer, const char* command, const void* name, int value) {
   sprintf(buffer, command, name, value);
-  send_at_command(buffer);
+  return send_at_command(buffer);
 }
 
 static void url_encode(char* buffer, char* data) {

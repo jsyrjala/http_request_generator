@@ -21,4 +21,6 @@ int list_foreach(list_node* list, int(*func)(void*));
 
 list_node* list_find(list_node* node, int(*func)(void*, void*), void *data);
 
+void list_free(list_node* list);
+
 #endif /* LINKEDLIST_H_INCLUDED */

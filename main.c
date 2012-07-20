@@ -12,7 +12,7 @@ void linked_list_tests() {
   printf("\n---------\nlinked_list_tests()\n");
   list_node* list = list_create((void*) "first");
   list_node* third = list_insert_start(list, (void*) "third");
-  list_node* second = list_insert_after(list, (void*) "second");
+  list_insert_after(list, (void*) "second");
   list_node* fourth = list_insert_after(list, (void*) "fourht");
 
   printf("trial 1\n");
@@ -39,4 +39,5 @@ void http_request_tests() {
 int main(void) {
   linked_list_tests();
   http_request_tests();
+  return 0;
 }
