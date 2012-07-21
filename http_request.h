@@ -5,8 +5,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include "linkedlist.h"
-
 /* see command AT+HTTPACTION= */
+
+#define HTTP_REQUEST_BUF_SIZE 100
 
 typedef enum http_method_e {
   POST = 1,
@@ -14,16 +15,16 @@ typedef enum http_method_e {
 } http_method;
 
 typedef struct http_field_s {
-  char* name;
-  char* value;
+  char name[HTTP_REQUEST_BUF_SIZE];
+  char value[HTTP_REQUEST_BUF_SIZE];
 } http_field;
 
 typedef struct http_request_s {
   http_method method;
-  char* cid;
-  char* url;
-  char* user_agent;
-  char* content_type;
+  char cid[2];
+  char url[HTTP_REQUEST_BUF_SIZE];
+  char user_agent[HTTP_REQUEST_BUF_SIZE];
+  char content_type[HTTP_REQUEST_BUF_SIZE];
   int redirect;
   int timeout;
 

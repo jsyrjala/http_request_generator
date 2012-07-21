@@ -12,8 +12,8 @@ http_field* http_create_field(char* name, char* value)
     // fail
     return NULL;
   }
-  field->name = name;
-  field->value = value;
+  strncpy(field->name, name, HTTP_REQUEST_BUF_SIZE);
+  strncpy(field->value, value, HTTP_REQUEST_BUF_SIZE);
   return field;
 }
 
@@ -33,10 +33,10 @@ http_request* http_request_create(http_method method, char* url, int timeout)
     return NULL;
   }
   request->method = method;
-  request->cid = "1";
-  request->url = url;
-  request->user_agent = "RuuviTracker Firmware/0.1";
-  request->content_type = "application/x-www-form-urlencoded";
+  strncpy(request->cid, "1", 2);
+  strncpy(request->url, url, HTTP_REQUEST_BUF_SIZE);
+  strncpy(request->user_agent, "RuuviTracker Firmware/0.1", HTTP_REQUEST_BUF_SIZE);
+  strncpy(request->content_type, "application/x-www-form-urlencoded", HTTP_REQUEST_BUF_SIZE);
   request->redirect = 1;
   request->timeout = timeout;
   request->fields = NULL;
